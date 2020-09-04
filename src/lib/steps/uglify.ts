@@ -15,6 +15,7 @@ export async function minifyJsFile(inputPath: string): Promise<string> {
   const inputSourceMapBuffer: Buffer = await readFile(`${inputPath}.map`);
   const result = minify(inputFileBuffer.toString(), {
     sourceMap: {
+      includeSources: true,
       content: inputSourceMapBuffer.toString(),
       url: basename(sourcemapOut)
     },
